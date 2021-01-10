@@ -1,0 +1,8 @@
+{
+  "name": "vue-demo",
+  "version": "0.0.1",
+  "main": "main.js", 
+  "repository": "git@github.com:sunkuangdong/vue-demo.git",
+  "author": "孙匡东 <769296817@qq.com>",
+  "license": "MIT"
+}
