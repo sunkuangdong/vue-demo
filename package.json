@@ -1,8 +1,17 @@
 {
   "name": "vue-demo",
   "version": "0.0.1",
-  "main": "main.js", 
+  "main": "main.js",
   "repository": "git@github.com:sunkuangdong/vue-demo.git",
   "author": "孙匡东 <769296817@qq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^4.5.1",
+    "lodash": "^4.17.20",
+    "webpack": "^5.12.2",
+    "webpack-cli": "^4.3.1"
+  }
 }
