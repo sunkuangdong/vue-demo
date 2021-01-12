@@ -6,7 +6,7 @@ module.exports = {
     mode: "production",
     entry: "./src/index.js",
     output: {
-        filename: "index.js",
+        filename: "[name].[contenthash].js",
         path: path.resolve(__dirname, "dist")
     },
     module: {
@@ -20,6 +20,10 @@ module.exports = {
                     },
                     'css-loader',
                 ]
+            },
+            {
+                test: /\.less$/,
+                use: ["style-loader", 'css-loader', "less-loader"]
             },
             {
                 test: /\.s[ac]ss$/,
@@ -43,7 +47,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
+            filename: "[name].[contenthash].css",
             chunkFilename: '[id].css',
         })
     ],
