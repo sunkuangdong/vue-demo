@@ -5,6 +5,10 @@
   "repository": "git@github.com:sunkuangdong/vue-demo.git",
   "author": "孙匡东 <769296817@qq.com>",
   "license": "MIT",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
   "scripts": {
     "build": "rm -rf dist && webpack --config webpack.config.js"
   },

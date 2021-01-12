@@ -9,15 +9,20 @@ module.exports = {
         filename: "[name].[contenthash].js",
         path: path.resolve(__dirname, "dist")
     },
+    // devtool: "inline-source-map",
     module: {
-        rules: [{
+        rules: [
+            {
+                test: /\.(jpe?g|png|gif)$/i,
+                loader: "file-loader"
+            }, {
                 test: /\.css$/,
                 use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../',
-                        },
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        publicPath: '../',
                     },
+                },
                     'css-loader',
                 ]
             },
@@ -45,7 +50,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: "云云笔记",
+            template: "./index.html"
+        }),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css",
             chunkFilename: '[id].css',
