@@ -10,9 +10,8 @@
     "**/*.scss"
   ],
   "scripts": {
-    "dev": "webpack serve --open",
-    "start": "webpack serve --open",
-    "build": "rm -rf dist && webpack --config webpack.config.js"
+    "dev": "webpack serve --progress --config webpack.config.js --open",
+    "build": "rm -rf dist && webpack --config webpack.config.prod.js"
   },
   "dependencies": {
     "css-loader": "^5.0.1",
