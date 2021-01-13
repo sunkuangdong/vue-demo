@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const path = require("path")
 
 module.exports = {
@@ -34,6 +35,18 @@ module.exports = {
     },
     module: {
         rules: [{
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            }, {
+                test: /\.js$/,
+                loader: 'babel-loader'
+            }, {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
+                ]
+            }, {
                 test: /\.(jpe?g|png|gif)$/i,
                 loader: "file-loader"
             }, {
@@ -79,5 +92,6 @@ module.exports = {
             filename: "[name].[contenthash].css",
             chunkFilename: '[id].css',
         }),
+        new VueLoaderPlugin()
     ],
 }
