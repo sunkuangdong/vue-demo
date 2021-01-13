@@ -35,52 +35,46 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            }, {
-                test: /\.js$/,
-                loader: 'babel-loader'
-            }, {
-                test: /\.css$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader'
-                ]
-            }, {
-                test: /\.(jpe?g|png|gif)$/i,
-                loader: "file-loader"
-            }, {
-                test: /\.css$/,
-                use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../',
-                        },
-                    },
-                    'css-loader',
-                ]
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        }, {
+            test: /\.js$/,
+            loader: 'babel-loader'
+        }, {
+            test: /\.(jpe?g|png|gif)$/i,
+            loader: "file-loader"
+        }, {
+            test: /\.css$/,
+            use: [{
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: '../',
+                },
             },
-            {
-                test: /\.less$/,
-                use: ["style-loader", 'css-loader', "less-loader"]
-            },
-            {
-                test: /\.s[ac]ss$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            implementation: require("dart-sass")
-                        }
-                    },
-                ]
-            },
-            {
-                test: /\.ts$/,
-                use: "ts-loader"
-            }
+                'css-loader',
+            ]
+        },
+        {
+            test: /\.less$/,
+            use: ["style-loader", 'css-loader', "less-loader"]
+        },
+        {
+            test: /\.s[ac]ss$/,
+            use: [
+                "style-loader",
+                "css-loader",
+                {
+                    loader: "sass-loader",
+                    options: {
+                        implementation: require("dart-sass")
+                    }
+                },
+            ]
+        },
+        {
+            test: /\.ts$/,
+            use: "ts-loader"
+        }
         ]
     },
     plugins: [
