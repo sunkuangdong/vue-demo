@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const path = require("path")
 
 module.exports = {
@@ -10,19 +11,45 @@ module.exports = {
         path: path.resolve(__dirname, "dist")
     },
     // devtool: "inline-source-map",
+    devServer: {
+        contentBase: './dist',
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'async',
+            minSize: 20000,
+            minRemainingSize: 0,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
+            enforceSizeThreshold: 50000,
+            cacheGroups: {
+                defaultVendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    reuseExistingChunk: true
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        }
+    },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(jpe?g|png|gif)$/i,
                 loader: "file-loader"
             }, {
                 test: /\.css$/,
                 use: [{
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                        publicPath: '../',
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../',
+                        },
                     },
-                },
                     'css-loader',
                 ]
             },
@@ -57,6 +84,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css",
             chunkFilename: '[id].css',
-        })
+        }),
     ],
 }

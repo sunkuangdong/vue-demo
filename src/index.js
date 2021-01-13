@@ -1,3 +1,6 @@
+const Vue = () => import("vue")
+const _ = () => import("lodash")
+// import _ from "lodash"
 import "./index.scss"
 import "./style.css"
 import "./num.less"
@@ -9,3 +12,5 @@ import num from "./fn.ts"
 
 console.log("hi")
 console.log(num)
+console.log(Vue)
+console.log(_)
